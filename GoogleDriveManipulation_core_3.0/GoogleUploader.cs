@@ -3,12 +3,26 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GoogleDriveManipulator
 {
-	public class GoogleUploader : GoogleHelper
+    [ComVisible(true)]
+    [Guid("EAEF1A5B-B9CF-487C-AAEF-0E849A9EDF7E")]
+    public interface IUploader
+	{
+        static Task<GoogleUploader> Upload(string token, string filePath, string fileName)
+		{
+			return null;
+		}
+
+    }
+    [ClassInterface(ClassInterfaceType.None)]
+    [ComVisible(true)]
+    [Guid("06E19E83-F48F-4DF5-B354-9079E9B47DD1"), ProgId("GoogleDrive.UploadFile")]
+    public class GoogleUploader : GoogleHelper
 	{
 		public string output;
 		GoogleUploader(string _token, string _filePath, string _fileName) : base(_token, _filePath, _fileName)
